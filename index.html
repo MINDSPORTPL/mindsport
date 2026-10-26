@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="logo.png">
+    <title>mindsport.pl</title>
+    <meta name="description" content="Kompleksowa oferta profesjonalnego malowania płotów, wiat, indywidualnych treningów personalnych oraz serwisu ogrodów. Sprawdź naszą ofertę i skontaktuj się już dziś!">
+    
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --navy-dark: #0f172a;     
+            --navy-light: #1e293b;    
+            --text-main: #1e293b;
+            --text-muted: #475569;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --border-card: rgba(2, 132, 199, 0.2);
+            --shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            --shadow-hover: 0 25px 50px rgba(2, 132, 199, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            font-size: 100%;
+            transition: font-size 0.2s ease;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f1f5f9;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+     .site-header {
+    background:
+        linear-gradient(
+            rgba(15,23,42,0.92),
+            rgba(15,23,42,0.92)
+        ),
+        url('header.jpg') center center/cover;
+    color: #ffffff;
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+        
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .accessibility-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .accessibility-bar button {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--navy-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .accessibility-bar button:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #38bdf8, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .header-content p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* --- TRYB WYSOKIEGO KONTRASTU --- */
+        body.high-contrast {
+            background: #000000 !important;
+            color: #ffff00 !important;
+            background-image: none !important;
+        }
+        body.high-contrast .site-header,
+        body.high-contrast .site-footer {
+            background: #000000 !important;
+            border-color: #ffff00 !important;
+        }
+        body.high-contrast .card,
+        body.high-contrast .subpage-container {
+            background: #000000 !important;
+            border: 2px solid #ffff00 !important;
+            box-shadow: none !important;
+        }
+        body.high-contrast .card h2,
+        body.high-contrast .card p,
+        body.high-contrast .card span,
+        body.high-contrast .header-content h1,
+        body.high-contrast .header-content p,
+        body.high-contrast .site-footer h3,
+        body.high-contrast .site-footer p,
+        body.high-contrast .site-footer .copyright,
+        body.high-contrast .subpage-content h2,
+        body.high-contrast .subpage-content p,
+        body.high-contrast .subpage-content li {
+            color: #ffff00 !important;
+            -webkit-text-fill-color: #ffff00 !important;
+            background: none !important;
+        }
+        body.high-contrast .accessibility-bar button,
+        body.high-contrast .back-btn {
+            background: #000000 !important;
+            color: #ffff00 !important;
+            border-color: #ffff00 !important;
+        }
+        body.high-contrast a {
+            color: #00ffff !important;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            opacity: 0.4;
+            animation: pulse 10s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: #38bdf8;
+            top: 20%;
+            left: -10%;
+        }
+
+        body::after {
+            background: #94a3b8;
+            bottom: 20%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(15px, -15px); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border-card);
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .card-header {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* --- STYLOWANIE GRAFIK PNG NA KAFELKACH --- */
+        .card-img-container {
+            width: 100%;
+            height: 240px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .card-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        .card p.short-desc {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .card-btn {
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            width: 100%;
+            text-align: center;
+        }
+
+        .subpage-container {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--border-card);
+            box-shadow: var(--shadow);
+        }
+
+        .back-btn {
+            background: var(--navy-light);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+        }
+
+        .subpage-content h2 {
+            font-size: 2rem;
+            color: var(--navy-dark);
+            margin-bottom: 1rem;
+        }
+
+        .subpage-content p {
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .subpage-content ul {
+            margin: 1rem 0 1.5rem 1.2rem;
+            color: #475569;
+        }
+
+        .subpage-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .gallery-section {
+            margin-top: 2rem;
+        }
+
+        .gallery-section h3 {
+            font-size: 1.3rem;
+            color: var(--navy-dark);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 120px;
+            cursor: pointer;
+            border: 2px solid var(--border-card);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 900px;
+            max-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary);
+        }
+
+        .lightbox-prev {
+            left: -60px;
+        }
+
+        .lightbox-next {
+            right: -60px;
+        }
+
+        .site-footer {
+            background-color: var(--navy-dark);
+            color: #f1f5f9;
+            padding: 35px 1.5rem;
+            width: 100%;
+            border-top: 3px solid var(--primary);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .site-footer h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .site-footer p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .site-footer a {
+            color: #38bdf8;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-prev { left: 10px; z-index: 1010; }
+            .lightbox-next { right: 10px; z-index: 1010; }
+        }
+
+        @media (min-width: 768px) {
+            .header-content h1 {
+                font-size: 3rem;
+            }
+            .card {
+                padding: 2.5rem 2rem;
+            }
+            .site-header, .site-footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+		.mainlogo {
+			height: 150px;
+			width: 500px;
+		}
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="accessibility-bar" aria-label="Narzędzia dostępności">
+                <button onclick="changeFontSize(1)" aria-label="Powiększ tekst">A+</button>
+                <button onclick="changeFontSize(-1)" aria-label="Pomniejsz tekst">A-</button>
+                <button onclick="toggleContrast()" aria-label="Zmień kontrast">Kontrast</button>
+            </div>
+            
+            <div class="header-content">
+                <img class="mainlogo" src="logo2.png">
+                <p>Tanio! Szybko! Fachowa wiedza!</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- WIDOK GŁÓWNY (KAFELKI ZE ZDJĘCIAMI PNG) -->
+        <main id="main-view" class="view-section active">
+            <div class="grid">
+                
+                <!-- KAFELEK 1 -->
+                <div class="card" onclick="showSubpage('service-1')">
+                    <div class="card-header">
+                        <div class="card-img-container">
+                            <img src="malowanie.png" alt="Malowanie płotów" class="card-img">
+                        </div>
+                        
+                        <p class="short-desc">Odnawianie i zabezpieczanie płotów i wiat.</p>
+                    </div>
+                    <div class="card-btn">
+                        <span>Szczegóły oferty</span>
+                        <span>➔</span>
+                    </div>
+                </div>
+
+                <!-- KAFELEK 2 -->
+                <div class="card" onclick="showSubpage('service-2')">
+                    <div class="card-header">
+                        <div class="card-img-container">
+                            <img src="trening.png" alt="Trening Personalny" class="card-img">
+                        </div>
+                       
+                        <p class="short-desc">Indywidualne plany treningowe, poprawa kondycji i sylwetki.</p>
+                    </div>
+                    <div class="card-btn">
+                        <span>Szczegóły oferty</span>
+                        <span>➔</span>
+                    </div>
+                </div>
+
+                <!-- KAFELEK 3 -->
+                <div class="card" onclick="showSubpage('service-3')">
+                    <div class="card-header">
+                        <div class="card-img-container">
+                            <img src="ogrod/ogrod.png" alt="Serwis Ogród" class="card-img">
+                        </div>
+                       
+                        <p class="short-desc">Upiększymy twój ogród. Z nami twoja zieleń rozkwitnie!</p>
+                    </div>
+                    <div class="card-btn">
+                        <span>Szczegóły oferty</span>
+                        <span>➔</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- WIDOK PODSTRONY 1 -->
+        <div id="service-1" class="view-section">
+            <div class="subpage-container">
+                <button class="back-btn" onclick="showMain()">← Powrót na stronę główną</button>
+                <div class="subpage-content">
+                    <h2>Malowanie płotów i wiat</h2>
+                    <p>Oferuję profesjonalne malowanie, czyszczenie oraz impregnację płotów i wiat. Przywracamy drewnu i metalowi dawny blask, zabezpieczając je na wiele lat.</p>
+                    <ul>
+                        <li>Mycie ciśnieniowe powierzchni przed malowaniem</li>
+                        <li>Trwałe farby i impregnaty odporne na deszcz i UV</li>
+                        <li>Darmowa wycena i dojazd do klienta</li>
+                    </ul>
+
+                    <div class="gallery-section">
+                        <h3>Galeria realizacji</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="openLightbox(0, ['https://picsum.photos/id/10/800/600', 'https://picsum.photos/id/20/800/600', 'https://picsum.photos/id/30/800/600', 'https://picsum.photos/id/40/800/600'])">
+                                <img src="https://picsum.photos/id/10/300/200" alt="Realizacja 1">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(1, ['https://picsum.photos/id/10/800/600', 'https://picsum.photos/id/20/800/600', 'https://picsum.photos/id/30/800/600', 'https://picsum.photos/id/40/800/600'])">
+                                <img src="https://picsum.photos/id/20/300/200" alt="Realizacja 2">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(2, ['https://picsum.photos/id/10/800/600', 'https://picsum.photos/id/20/800/600', 'https://picsum.photos/id/30/800/600', 'https://picsum.photos/id/40/800/600'])">
+                                <img src="https://picsum.photos/id/30/300/200" alt="Realizacja 3">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(3, ['https://picsum.photos/id/10/800/600', 'https://picsum.photos/id/20/800/600', 'https://picsum.photos/id/30/800/600', 'https://picsum.photos/id/40/800/600'])">
+                                <img src="https://picsum.photos/id/40/300/200" alt="Realizacja 4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WIDOK PODSTRONY 2 -->
+        <div id="service-2" class="view-section">
+            <div class="subpage-container">
+                <button class="back-btn" onclick="showMain()">← Powrót na stronę główną</button>
+                <div class="subpage-content">
+                    <h2>Trening Personalny</h2>
+                    <p>Skuteczne treningi dopasowane do Twojego celu — redukcja tkanki tłuszczowej, budowa siły lub ogólna sprawność.</p>
+                    <ul>
+                        <li>Treningi 1 na 1 na siłowni lub w plenerze</li>
+                        <li>Indywidualny plan żywieniowy i treningowy</li>
+                        <li>Stałe wsparcie i kontrola postępów</li>
+                    </ul>
+
+                    <div class="gallery-section">
+                        <h3>Galeria</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="openLightbox(0, ['https://picsum.photos/id/1069/800/600', 'https://picsum.photos/id/1070/800/600', 'https://picsum.photos/id/1071/800/600'])">
+                                <img src="https://picsum.photos/id/1069/300/200" alt="Trening 1">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(1, ['https://picsum.photos/id/1069/800/600', 'https://picsum.photos/id/1070/800/600', 'https://picsum.photos/id/1071/800/600'])">
+                                <img src="https://picsum.photos/id/1070/300/200" alt="Trening 2">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(2, ['https://picsum.photos/id/1069/800/600', 'https://picsum.photos/id/1070/800/600', 'https://picsum.photos/id/1071/800/600'])">
+                                <img src="https://picsum.photos/id/1071/300/200" alt="Trening 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WIDOK PODSTRONY 3 -->
+        <div id="service-3" class="view-section">
+            <div class="subpage-container">
+                <button class="back-btn" onclick="showMain()">← Powrót na stronę główną</button>
+                <div class="subpage-content">
+                    <h2>Serwis Ogrodów</h2>
+                    <p>Tani! Szybki! Fachowy serwis ogrodowy! <br> Na terenie Leszna Wlkp. i okolic. Zapewniamy indywidualne podejście do każdego zlecenia oraz doradzimy w sprawach kluczowych. <br>
+						Oferujemy ogólną pielęgnację ogrodów: 
+						<ul>
+						<li>Nasadzania </li>
+						<li>Koszenie trawników </li>
+						<li>Wykaszanie wysokiej trawy </li>
+						<li>Czyszczenie zaniedbanych działek </li>
+						<li>Usuwanie chwastów i samosiejek  </li>
+						<li>Wycinanie krzewów i małych drzew </li>
+						<li>Przycinanie żywopłotów, kwiatostanów, drzewostanów </li>
+						<li>Porządkowanie terenów zielonych - nawożenie ziemi, równanie terenu </li>
+						<li>Oprysk </li>
+						</ul>
+						</p>
+						<p> Dlaczego się opłaca? </p>
+						<ul>
+						<li>Indywidualna wycena</li>
+						<li>Terminowość</li>
+						<li>Rzetelne wykonanie</li>
+						<li>Własny sprzęt</li>
+						<li>Dojazd do klienta</li>
+						<li>Jednorazowa lub stała współpraca</li>
+						</ul>
+						<p>Więcej informacji telefonicznie lub po wcześniejszym umówieniu spotkania</p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Telefon:</strong> <a href="tel:+48736210485">+48 736 210 485</a><br>
+                        <strong>E-mail:</strong> <a href="mailto:kontakt@twojadomena.pl">kontakt@twojadomena.pl</a><br>
+                       
+                    </p>
+
+                    <div class="gallery-section">
+                        <h3>Galeria zdjęć</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="openLightbox(0, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod1.jpg" alt="Ogród 1">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(1, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod2.jpg" alt="Ogród 2">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(2, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod3.jpg" alt="Ogród 3">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(3, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod4.jpg" alt="Ogród 4">
+                            </div>
+                            <div class="gallery-item" onclick="openLightbox(4, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod5.jpg" alt="Ogród 5">
+                            </div>
+							<div class="gallery-item" onclick="openLightbox(4, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod6.jpg" alt="Ogród 5">
+                            </div>
+							<div class="gallery-item" onclick="openLightbox(4, ['ogrod/ogrod1.jpg', 'ogrod/ogrod2.jpg', 'ogrod/ogrod3.jpg', 'ogrod/ogrod4.jpg', 'ogrod/ogrod5.jpg', 'ogrod/ogrod6.jpg', 'ogrod/ogrod7.jpg'])">
+                                <img src="ogrod/ogrod7.jpg" alt="Ogród 5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="lightboxModal" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">‹</button>
+            <img id="lightboxImg" src="" alt="Powiększone zdjęcie">
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">›</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <h3>Dane kontaktowe</h3>
+            <p><strong>Adres:</strong> ul. Przykładowa 12/3, 64-100 Leszno</p>
+            <p><strong>Telefon:</strong> <a href="tel:+48736210485">+48 736 210 485</a></p>
+            <p><strong>Email:</strong> <a href="mailto:kontakt@twojadomena.pl">kontakt@twojadomena.pl</a></p>
+            <p class="copyright">&copy; 2026 mindsport.pl. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentFontSize = 100;
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function changeFontSize(direction) {
+            currentFontSize += direction * 10;
+            if (currentFontSize < 80) currentFontSize = 80;
+            if (currentFontSize > 140) currentFontSize = 140;
+            document.documentElement.style.fontSize = currentFontSize + '%';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function showSubpage(subpageId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(subpageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showMain() {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('main-view').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openLightbox(index, imagesArray) {
+            currentImages = imagesArray;
+            currentIndex = index;
+            document.getElementById('lightboxImg').src = currentImages[currentIndex];
+            document.getElementById('lightboxModal').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.remove('active');
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = currentImages.length - 1;
+            } else if (currentIndex >= currentImages.length) {
+                currentIndex = 0;
+            }
+            document.getElementById('lightboxImg').src = currentImages[currentIndex];
+        }
+
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('lightboxModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+    </script>
+</body>
+</html>
